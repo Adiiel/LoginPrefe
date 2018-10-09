@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Seccion Datos Usuario"></PreferenceCategory>
+<EditTextPreference
+    android:key="nombre_texto"
+    android:title="Nombre"
+    android:summary="almacena el texto con el nombre"
+    android:defaultValue="Sin nombre">
+</EditTextPreference>
+    <EditTextPreference
+        android:key="contraseña_texto"
+        android:title="Contraseña"
+        android:summary="almacena texto con el nombre"
+        android:defaultValue="Sin apellido">
+    </EditTextPreference>
+    <CheckBoxPreference
+        android:key="recordar_contraseña"
+        android:title="Recordar contraseña">
+    </CheckBoxPreference>
+</PreferenceScreen>
