@@ -52,6 +52,12 @@ private SharedPreferences sharedPref;
         editor.putString("contraseñakey",contraseña);
         editor.commit();
     }
+    private void getUser(){
+        String nombre= sharedPref.getString(("nombrekey"),"");
+        edtNombre.setText(nombre);
+        String contraseña = sharedPref.getString(("contraseñakey"),"");
+        edtPass.setText(contraseña);
+    }
     Boolean validarString(String texto){
         return  texto!= null && texto.trim().length()>0;
     }
