@@ -1,6 +1,5 @@
 package pe.edu.upeu.loginprefe;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +17,7 @@ private Button btnin;
 private CheckBox check;
 private SharedPreferences sharedPref;
 private Boolean ATVRDBTN;
-private static final String STRING_PREFERENCE = "Adiel","123";
+private static final String STRING_PREFERENCE = "Adiel";
 private static final String PREFERENCE_ESTADO_SESION= "estado.button.sesion";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +41,24 @@ private static final String PREFERENCE_ESTADO_SESION= "estado.button.sesion";
                 String contraseña = edtPass.getText().toString();
                 saveUser();
 
-                if (validarString(nombre)&& validarString(contraseña)){
+                /*if (validarString(nombre)&& validarString(contraseña)){
 
                 }else{
                     Toast.makeText(getApplicationContext(),"DATOS INCOMPLETOS", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
+        getUser();
+    }
         public void Guardarestadodelcheck(){
            SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCE,MODE_PRIVATE);
            preferences.edit().putBoolean(PREFERENCE_ESTADO_SESION,check.isChecked()).apply();
         }
-        public void ObtenerEstadocheck(){
+        public boolean ObtenerEstadocheck(){
             SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCE,MODE_PRIVATE);
             return preferences.getBoolean(PREFERENCE_ESTADO_SESION,false);
         }
-        getUser();
-    }
-    private void saveUser(){
+    public void saveUser(){
         String nombre = edtNombre.getText().toString();
         String contraseña = edtPass.getText().toString();
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -67,10 +66,10 @@ private static final String PREFERENCE_ESTADO_SESION= "estado.button.sesion";
         editor.putString(getString(R.string.password_key), contraseña);
         editor.commit();
     }
-    private void getUser(){
-        String nombre= sharedPref.getString(("nombrekey"),"");
+    public void getUser(){
+        String nombre= sharedPref.getString((getString(R.string.nombre_key)),"");
         edtNombre.setText(nombre);
-        String contraseña = sharedPref.getString(("contraseñakey"),"");
+        String contraseña = sharedPref.getString((getString(R.string.password_key)),"");
         edtPass.setText(contraseña);
     }
     Boolean validarString(String texto){
